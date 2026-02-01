@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-10846';"-->
+    <link rel="icon" href="chat.svg" type="image/svg+xml">
+    <title>Chat</title>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-tooltip@1.x.x/dist/cdn.min.js"
+    defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body x-data="auth">
+    <template x-if="!loggedIn">
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+            <div x-show="logFailed" class="mb-4 border-red-600 border-1 rounded-sm p-2 text-red-600 bg-red-200">Login Failed</div>
+            <div class="w-full max-w-[3in] p-4 border-1 border-gray-500 shadow-md">
+                <img class="size-14 block m-auto" src="kiwi.svg" alt="kiwi">
+                <h1 class="text-center font-bold text-3xl">CHAT</h1>
+                <form id="login">
+                    <div class="mt-4">
+                        <input x-model="email" id="username-login" type="text" class="w-full p-2 border-1 rounded-sm border-gray-500" placeholder="Username" name="Username" required>
+                    </div>
+                    <div>
+                        <input x-model="password" id="password-login" type="password" class="w-full p-2 border-1 rounded-sm border-gray-500 mt-2" placeholder="Password" name="Password" required>
+                    </div>
+                    <!--span class="text-red-500" x-text="'pw: '+password"></span-->
+                <button @click.prevent="login" class="bg-gray-800 p-2 hover:bg-gray-600 mt-6 shadow-md w-full">
+                    <div class="text-white font-bold text-2xl">Log in</div>
+                </button>
+                </form>
+            </div>
+        </div>
+    </template>
+    <template x-if="loggedIn">
+        <div class="p-4">Welcome to the chat App!</div>
+    </template>
+    
+    <script nonce="10846" src="app/app.js"></script>
+</body>
+</html>
